@@ -23,14 +23,14 @@ class counter extends Component {
     return (
       <React.Fragment>
         <div className="row">
-          <div className="col-1">
+          <div className="col col-sm-3 col-md-1">
             <h4>
               <span className={this.getBadgeClass()}>
                 {this.getCounterValue()}
               </span>
             </h4>
           </div>
-          <div className="col-1">
+          <div className="col col-sm-2 col-md-1">
             <button
               onClick={() => this.props.onIncrement(this.props.counter)}
               type="button"
@@ -39,7 +39,7 @@ class counter extends Component {
               +
             </button>
           </div>
-          <div className="col-1">
+          <div className="col col-sm-2 col-md-1">
             <button
               onClick={() => this.props.onDecrement(this.props.counter)}
               type="button"
@@ -49,7 +49,7 @@ class counter extends Component {
               -
             </button>
           </div>
-          <div className="col-1">
+          <div className="col col-sm-2 col-md-1">
             <button
               type="button"
               onClick={() => this.props.onDelete(this.props.counter)}
@@ -58,7 +58,7 @@ class counter extends Component {
               x
             </button>
           </div>
-          <div className="col-2">
+          <div className="col col-sm-3 col-md-2">
             <h4>Counters {this.props.counter.id}</h4>
           </div>
         </div>
