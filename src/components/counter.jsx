@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { INCREMENT, DECREMENT, DELETE } from "../actions/actions";
 
 class counter extends Component {
   getBadgeClass = () => {
@@ -19,6 +21,27 @@ class counter extends Component {
     return false;
   };
 
+  handleIncrement = counterId => {
+    this.props.dispatch({
+      type: INCREMENT,
+      payload: { counterId }
+    });
+  };
+
+  handleDecrement = counterId => {
+    this.props.dispatch({
+      type: DECREMENT,
+      payload: { counterId }
+    });
+  };
+
+  counterDelete = counterId => {
+    this.props.dispatch({
+      type: DELETE,
+      payload: { counterId }
+    });
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -32,7 +55,7 @@ class counter extends Component {
           </div>
           <div className="col col-sm-2 col-md-1">
             <button
-              onClick={() => this.props.onIncrement(this.props.counter)}
+              onClick={() => this.handleIncrement(this.props.counter)}
               type="button"
               className="btn btn-success"
             >
@@ -41,7 +64,7 @@ class counter extends Component {
           </div>
           <div className="col col-sm-2 col-md-1">
             <button
-              onClick={() => this.props.onDecrement(this.props.counter)}
+              onClick={() => this.handleDecrement(this.props.counter)}
               type="button"
               className="btn btn-secondary"
               disabled={this.getDisabledState()}
@@ -52,7 +75,7 @@ class counter extends Component {
           <div className="col col-sm-2 col-md-1">
             <button
               type="button"
-              onClick={() => this.props.onDelete(this.props.counter)}
+              onClick={() => this.counterDelete(this.props.counter)}
               className="btn btn-danger"
             >
               x
@@ -68,4 +91,10 @@ class counter extends Component {
   }
 }
 
-export default counter;
+function mapStateToProps(state) {
+  return {
+    counters: state.counters
+  };
+}
+
+export default connect(mapStateToProps)(counter);
