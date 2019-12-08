@@ -9,11 +9,6 @@ const Navbar = Props => {
     });
   }
 
-  function getCounters() {
-    Props.dispatch({
-      type: GET_COUNTERS
-    });
-  }
   return (
     <div className="container-fluid">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
